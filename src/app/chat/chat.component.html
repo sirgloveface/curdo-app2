@@ -1,0 +1,14 @@
+<div>
+    <ul class="collection">
+        <li class="collection-item avatar" *ngFor="let chat of chats">
+                   <img src="avatarUrl()"  class="circle">
+                   <span class="title">#{{ chat.id }}</span>                
+                   <p>
+                       <i class="prefix mdi-action-alarm"></i>
+                       <span class="message-date">{{ chat.description }}</span>
+                       <br/>
+                   </p>
+                   
+       </li>
+    </ul>
+</div>

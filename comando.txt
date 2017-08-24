@@ -1,0 +1,7 @@
+// Para crear servicios
+ng g s chat
+ng g service chat
+// Para crear componentes
+ng g c chat
+ng g component chat
+
