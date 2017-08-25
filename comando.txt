@@ -1,3 +1,4 @@
+npm install --save express body-parser morgan body-parser serve-favicon
 // Para crear servicios
 ng g s chat
 ng g service chat

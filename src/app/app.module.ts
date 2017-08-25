@@ -11,9 +11,8 @@ import { BookService } from './book.service';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookCreateComponent } from './book-create/book-create.component';
 import { BookEditComponent } from './book-edit/book-edit.component';
-import { Routes, RouterModule } from '@angular/router';
 import { ChatComponent } from './chat/chat.component';
-import { PubNubAngular } from 'pubnub-angular2';
+
 
 
 export const appRoutes: Routes = [
@@ -42,8 +41,7 @@ export const appRoutes: Routes = [
   ],
   providers: [
     BookService,
-    {provide: LocationStrategy, useClass: HashLocationStrategy},
-    PubNubAngular
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })
