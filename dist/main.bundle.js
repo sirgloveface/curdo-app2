@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\n"
+module.exports = "<H1>PubNub Angular2 SDK Demo</H1>\n<router-outlet></router-outlet>\n<ul>\n    <li *ngFor='let item of PubNub.getMessage(channel)'>{{item.message}}</li>\n </ul>\n"
 
 /***/ }),
 
@@ -44,6 +44,8 @@ module.exports = "<router-outlet></router-outlet>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_pubnub_angular2__ = __webpack_require__("../../../../pubnub-angular2/lib/pubnub-angular2.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_pubnub_angular2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_pubnub_angular2__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -54,19 +56,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(pubnub) {
         this.title = 'Book Catalogue';
+        this.channel = 'conect-arduino';
+        this.pubnub = pubnub;
+        this.pubnub.init({
+            publishKey: 'pub-c-24150dba-a538-4de7-af26-643500dd957d',
+            subscribeKey: 'sub-c-af6ff0d2-6a8d-11e7-9bf2-0619f8945a4f'
+        });
+        this.pubnub.subscribe({
+            channels: [this.channel],
+            triggerEvents: ['message']
+        });
     }
+    AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        setInterval(function () {
+            var hw = 'Hello World, ' + Date.now();
+            _this.pubnub.publish({
+                channel: _this.channel,
+                message: {
+                    "id": 2,
+                    "text": hw
+                }
+            });
+        }, 1000);
+    };
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* Component */])({
             selector: 'app-root',
             template: __webpack_require__("../../../../../src/app/app.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/app.component.css")]
+            styles: [__webpack_require__("../../../../../src/app/app.component.css")],
+            providers: [__WEBPACK_IMPORTED_MODULE_1_pubnub_angular2__["PubNubAngular"]]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_pubnub_angular2__["PubNubAngular"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1_pubnub_angular2__["PubNubAngular"]) === 'function' && _a) || Object])
     ], AppComponent);
     return AppComponent;
+    var _a;
 }());
 //# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/app.component.js.map
 
