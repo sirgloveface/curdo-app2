@@ -11,8 +11,12 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use('/node_modules', express.static(__dirname + '/node_modules/'));
+app.use(express.static(path.join(__dirname, 'app')));
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
-      
+
+
+
 app.use('/book', book);
 
 // catch 404 and forward to error handler

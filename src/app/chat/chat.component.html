@@ -1,7 +1,7 @@
 <div>
     <ul class="collection">
         <li class="collection-item avatar" *ngFor="let chat of chats">
-                   <img src="avatarUrl()"  class="circle">
+                   <img src="//robohash.org/1?set=set2&bgset=bg2&size=70x70"  class="circle">
                    <span class="title">#{{ chat.id }}</span>                
                    <p>
                        <i class="prefix mdi-action-alarm"></i>
@@ -11,4 +11,12 @@
                    
        </li>
     </ul>
+    
+    <br/>
+    <ul *ngFor="let item of messages">
+        <li > 
+             <button (click)="action($event, item)" >{{ item.text }}</button>
+        </li>
+    </ul>    
+
 </div>

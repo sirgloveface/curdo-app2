@@ -1,3 +1,6 @@
+// Agregar angular-cli
+npm install @angular/cli@latest -g
+// Agregar libreias para node y express
 npm install --save express body-parser morgan body-parser serve-favicon
 // Para crear servicios
 ng g s chat

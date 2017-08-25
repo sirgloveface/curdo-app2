@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<H1>PubNub Angular2 SDK Demo</H1>\n<router-outlet></router-outlet>\n<ul>\n    <li *ngFor='let item of PubNub.getMessage(channel)'>{{item.message}}</li>\n </ul>\n"
+module.exports = "<H1>PubNub Angular2 SDK Demo</H1>\r\n<router-outlet></router-outlet>\r\n\r\n"
 
 /***/ }),
 
@@ -44,8 +44,6 @@ module.exports = "<H1>PubNub Angular2 SDK Demo</H1>\n<router-outlet></router-out
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_pubnub_angular2__ = __webpack_require__("../../../../pubnub-angular2/lib/pubnub-angular2.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_pubnub_angular2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_pubnub_angular2__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,47 +54,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
 var AppComponent = (function () {
-    function AppComponent(pubnub) {
+    function AppComponent() {
         this.title = 'Book Catalogue';
-        this.channel = 'conect-arduino';
-        this.pubnub = pubnub;
-        this.pubnub.init({
-            publishKey: 'pub-c-24150dba-a538-4de7-af26-643500dd957d',
-            subscribeKey: 'sub-c-af6ff0d2-6a8d-11e7-9bf2-0619f8945a4f'
-        });
-        this.pubnub.subscribe({
-            channels: [this.channel],
-            triggerEvents: ['message']
-        });
     }
     AppComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        setInterval(function () {
-            var hw = 'Hello World, ' + Date.now();
-            _this.pubnub.publish({
-                channel: _this.channel,
-                message: {
-                    "id": 2,
-                    "text": hw
-                }
-            });
-        }, 1000);
     };
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* Component */])({
             selector: 'app-root',
             template: __webpack_require__("../../../../../src/app/app.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/app.component.css")],
-            providers: [__WEBPACK_IMPORTED_MODULE_1_pubnub_angular2__["PubNubAngular"]]
+            styles: [__webpack_require__("../../../../../src/app/app.component.css")]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_pubnub_angular2__["PubNubAngular"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1_pubnub_angular2__["PubNubAngular"]) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
-    var _a;
 }());
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/app.component.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/app.component.js.map
 
 /***/ }),
 
@@ -178,7 +152,7 @@ var AppModule = (function () {
     ], AppModule);
     return AppModule;
 }());
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/app.module.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/app.module.js.map
 
 /***/ }),
 
@@ -203,7 +177,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/book-create/book-create.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1>Add New Book</h1>\n  <div class=\"row\">\n    <div class=\"col-md-6\">\n      <form (ngSubmit)=\"saveBook()\" #bookForm=\"ngForm\">\n        <div class=\"form-group\">\n          <label for=\"name\">ISBN</label>\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.isbn\" name=\"isbn\" required>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"name\">Title</label>\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.title\" name=\"title\" required>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"name\">Author</label>\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.author\" name=\"author\" required>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"name\">Publisher</label>\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.publisher\" name=\"publisher\" required>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"name\">Price</label>\n          <input type=\"number\" class=\"form-control\" [(ngModel)]=\"book.price\" name=\"price\" required>\n        </div>\n        <div class=\"form-group\">\n          <button type=\"submit\" class=\"btn btn-success\" [disabled]=\"!bookForm.form.valid\">Save</button>\n        </div>\n      </form>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n  <h1>Add New Book</h1>\r\n  <div class=\"row\">\r\n    <div class=\"col-md-6\">\r\n      <form (ngSubmit)=\"saveBook()\" #bookForm=\"ngForm\">\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">ISBN</label>\r\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.isbn\" name=\"isbn\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">Title</label>\r\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.title\" name=\"title\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">Author</label>\r\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.author\" name=\"author\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">Publisher</label>\r\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.publisher\" name=\"publisher\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">Price</label>\r\n          <input type=\"number\" class=\"form-control\" [(ngModel)]=\"book.price\" name=\"price\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <button type=\"submit\" class=\"btn btn-success\" [disabled]=\"!bookForm.form.valid\">Save</button>\r\n        </div>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -255,7 +229,7 @@ var BookCreateComponent = (function () {
     return BookCreateComponent;
     var _a, _b;
 }());
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/book-create.component.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/book-create.component.js.map
 
 /***/ }),
 
@@ -280,7 +254,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/book-detail/book-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1>{{ book.title }}</h1>\n  <dl class=\"list\">\n    <dt>ISBN</dt>\n    <dd>{{ book.isbn }}</dd>\n    <dt>Author</dt>\n    <dd>{{ book.author }}</dd>\n    <dt>Publisher</dt>\n    <dd>{{ book.publisher }}</dd>\n    <dt>Price</dt>\n    <dd>{{ book.price }}</dd>\n    <dt>Update Date</dt>\n    <dd>{{ book.updated_at }}</dd>\n  </dl>\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <a [routerLink]=\"['/book-edit', book._id]\" class=\"btn btn-success\">EDIT</a>\n      <button class=\"btn btn-danger\" type=\"button\" (click)=\"deleteBook(book._id)\">DELETE</button>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n  <h1>{{ book.title }}</h1>\r\n  <dl class=\"list\">\r\n    <dt>ISBN</dt>\r\n    <dd>{{ book.isbn }}</dd>\r\n    <dt>Author</dt>\r\n    <dd>{{ book.author }}</dd>\r\n    <dt>Publisher</dt>\r\n    <dd>{{ book.publisher }}</dd>\r\n    <dt>Price</dt>\r\n    <dd>{{ book.price }}</dd>\r\n    <dt>Update Date</dt>\r\n    <dd>{{ book.updated_at }}</dd>\r\n  </dl>\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <a [routerLink]=\"['/book-edit', book._id]\" class=\"btn btn-success\">EDIT</a>\r\n      <button class=\"btn btn-danger\" type=\"button\" (click)=\"deleteBook(book._id)\">DELETE</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -342,7 +316,7 @@ var BookDetailComponent = (function () {
     return BookDetailComponent;
     var _a, _b, _c;
 }());
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/book-detail.component.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/book-detail.component.js.map
 
 /***/ }),
 
@@ -367,7 +341,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/book-edit/book-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1>Edit Book</h1>\n  <div class=\"row\">\n    <div class=\"col-md-6\">\n      <form (ngSubmit)=\"updateBook(book._id)\" #bookForm=\"ngForm\">\n        <div class=\"form-group\">\n          <label for=\"name\">ISBN</label>\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.isbn\" name=\"isbn\" required>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"name\">Title</label>\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.title\" name=\"title\" required>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"name\">Author</label>\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.author\" name=\"author\" required>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"name\">Publisher</label>\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.publisher\" name=\"publisher\" required>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"name\">Price</label>\n          <input type=\"number\" class=\"form-control\" [(ngModel)]=\"book.price\" name=\"price\" required>\n        </div>\n        <div class=\"form-group\">\n          <button type=\"submit\" class=\"btn btn-success\" [disabled]=\"!bookForm.form.valid\">Update</button>\n        </div>\n      </form>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n  <h1>Edit Book</h1>\r\n  <div class=\"row\">\r\n    <div class=\"col-md-6\">\r\n      <form (ngSubmit)=\"updateBook(book._id)\" #bookForm=\"ngForm\">\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">ISBN</label>\r\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.isbn\" name=\"isbn\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">Title</label>\r\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.title\" name=\"title\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">Author</label>\r\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.author\" name=\"author\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">Publisher</label>\r\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.publisher\" name=\"publisher\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">Price</label>\r\n          <input type=\"number\" class=\"form-control\" [(ngModel)]=\"book.price\" name=\"price\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <button type=\"submit\" class=\"btn btn-success\" [disabled]=\"!bookForm.form.valid\">Update</button>\r\n        </div>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -430,7 +404,7 @@ var BookEditComponent = (function () {
     return BookEditComponent;
     var _a, _b, _c;
 }());
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/book-edit.component.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/book-edit.component.js.map
 
 /***/ }),
 
@@ -525,7 +499,7 @@ var BookService = (function () {
     return BookService;
     var _a;
 }());
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/book.service.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/book.service.js.map
 
 /***/ }),
 
@@ -550,7 +524,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/book/book.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1>Book Catalogue\n    <a [routerLink]=\"['/book-create']\" class=\"btn btn-default btn-lg\">\n      <span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span>\n    </a>\n  </h1>\n  <table class=\"table\">\n    <thead>\n      <tr>\n        <th>Title</th>\n        <th>Author</th>\n        <th>Action</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let book of books\">\n        <td>{{ book.title }}</td>\n        <td>{{ book.author }}</td>\n        <td><a [routerLink]=\"['/book-details', book._id]\">Show Details</a></td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n  <h1>Book Catalogue\r\n    <a [routerLink]=\"['/book-create']\" class=\"btn btn-default btn-lg\">\r\n      <span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span>\r\n    </a>\r\n  </h1>\r\n  <table class=\"table\">\r\n    <thead>\r\n      <tr>\r\n        <th>Title</th>\r\n        <th>Author</th>\r\n        <th>Action</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let book of books\">\r\n        <td>{{ book.title }}</td>\r\n        <td>{{ book.author }}</td>\r\n        <td><a [routerLink]=\"['/book-details', book._id]\">Show Details</a></td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -599,7 +573,7 @@ var BookComponent = (function () {
     return BookComponent;
     var _a;
 }());
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/book.component.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/book.component.js.map
 
 /***/ }),
 
@@ -624,7 +598,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/chat/chat.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <ul class=\"collection\">\n        <li class=\"collection-item avatar\" *ngFor=\"let chat of chats\">\n                   <img src=\"avatarUrl()\"  class=\"circle\">\n                   <span class=\"title\">#{{ chat.id }}</span>                \n                   <p>\n                       <i class=\"prefix mdi-action-alarm\"></i>\n                       <span class=\"message-date\">{{ chat.description }}</span>\n                       <br/>\n                   </p>\n                   \n       </li>\n    </ul>\n</div>"
+module.exports = "<div>\r\n    <ul class=\"collection\">\r\n        <li class=\"collection-item avatar\" *ngFor=\"let chat of chats\">\r\n                   <img src=\"//robohash.org/1?set=set2&bgset=bg2&size=70x70\"  class=\"circle\">\r\n                   <span class=\"title\">#{{ chat.id }}</span>                \r\n                   <p>\r\n                       <i class=\"prefix mdi-action-alarm\"></i>\r\n                       <span class=\"message-date\">{{ chat.description }}</span>\r\n                       <br/>\r\n                   </p>\r\n                   \r\n       </li>\r\n    </ul>\r\n    \r\n    <br/>\r\n    <ul *ngFor=\"let item of messages\">\r\n        <li > \r\n             <button (click)=\"action($event, item)\" >{{ item.text }}</button>\r\n        </li>\r\n    </ul>    \r\n\r\n</div>"
 
 /***/ }),
 
@@ -634,6 +608,8 @@ module.exports = "<div>\n    <ul class=\"collection\">\n        <li class=\"coll
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_pubnub_angular2__ = __webpack_require__("../../../../pubnub-angular2/lib/pubnub-angular2.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_pubnub_angular2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_pubnub_angular2__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -644,14 +620,60 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var ChatComponent = (function () {
-    function ChatComponent() {
+    function ChatComponent(pubnub) {
         this.joinned = false;
         this.newUser = { nickname: '', room: '' };
         this.msgData = { room: '', nickname: '', message: '' };
         this.chats = [{ 'id': 1, "description": "prueba" }, { 'id': 2, "description": "prueba2" }];
+        this.messages = [{ "id": 1, "text": "Tony Garcia", "date": new Date() }];
+        this.channel = 'conect-arduino';
+        this.pubnub = pubnub;
+        this.pubnub.init({
+            publishKey: 'pub-c-24150dba-a538-4de7-af26-643500dd957d',
+            subscribeKey: 'sub-c-af6ff0d2-6a8d-11e7-9bf2-0619f8945a4f'
+        });
+        this.pubnub.subscribe({
+            channels: [this.channel],
+            withPresence: true,
+            triggerEvents: ['message', 'presence', 'status']
+        });
+        this.pubnub.getMessage('conect-arduino', function (msg) {
+            console.log("mensaje");
+            this.messages.push(msg.message);
+            console.log(msg);
+        });
+        this.pubnub.getPresence('conect-arduino', function (pse) {
+            console.log("conect");
+        });
+        this.pubnub.getStatus('conect-arduino', function (st) {
+            console.log("presence");
+        });
     }
     ChatComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        setInterval(function () {
+            var hw = 'Hello World, ' + Date.now();
+            _this.pubnub.publish({
+                channel: _this.channel,
+                message: {
+                    "id": 1,
+                    "text": hw
+                }
+            });
+        }, 1000000000000000000);
+    };
+    ChatComponent.prototype.action = function (event, item) {
+        console.log("function called");
+        this.pubnub.publish({
+            channel: this.channel,
+            message: {
+                "id": 1,
+                "text": "texto enviado",
+                "date": new Date()
+            }
+        });
     };
     // Fetching a uniq random avatar from the robohash.org service.
     ChatComponent.prototype.avatarUrl = function () {
@@ -661,13 +683,15 @@ var ChatComponent = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* Component */])({
             selector: 'app-chat',
             template: __webpack_require__("../../../../../src/app/chat/chat.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/chat/chat.component.css")]
+            styles: [__webpack_require__("../../../../../src/app/chat/chat.component.css")],
+            providers: [__WEBPACK_IMPORTED_MODULE_1_pubnub_angular2__["PubNubAngular"]]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_pubnub_angular2__["PubNubAngular"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1_pubnub_angular2__["PubNubAngular"]) === 'function' && _a) || Object])
     ], ChatComponent);
     return ChatComponent;
+    var _a;
 }());
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/chat.component.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/chat.component.js.map
 
 /***/ }),
 
@@ -683,7 +707,7 @@ var ChatComponent = (function () {
 var environment = {
     production: false
 };
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/environment.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/environment.js.map
 
 /***/ }),
 
@@ -704,7 +728,7 @@ if (__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment *
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_28" /* enableProdMode */])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_3__app_app_module__["a" /* AppModule */]);
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/main.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/main.js.map
 
 /***/ }),
 
