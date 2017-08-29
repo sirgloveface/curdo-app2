@@ -14,10 +14,8 @@
     
     <br/>
     <button (click)="action($event)" > enviar</button>
+ 
     <ul *ngFor="let item of messages">
-        <li > {{ item.text }}
-             <!--<button (click)="action($event, item)" >{{ item.text }}</button>-->
-        </li>
-    </ul>    
-
+        <li>xxx{{ item.message.text }}</li>
+    </ul>  
 </div>
