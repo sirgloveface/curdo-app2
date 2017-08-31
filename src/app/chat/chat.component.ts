@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PubNubAngular} from 'pubnub-angular2';
-
+declare var jquery:any;
+declare var $ :any;
 
 @Component({
     selector: 'app-chat',
@@ -14,8 +15,21 @@ export class ChatComponent implements OnInit {
     channel: string;
     messages: any;
     public items: Array<string>;
+    resFlag: boolean = false;
+    newUser: boolean = false;
+    exitedUser: boolean = false;
+    newUserName: string = null;
+    exitedUserName: string = null;
+    sentMessageUsername: string = null;
+    response: string;
+    clientsNameList: number[];
+    message: string;
+    msgCount: number = 0;
+    
 
     constructor(pubnub: PubNubAngular) {
+        let reference = this;
+        let temp;
         var user = 'web-client_' + new Date();
         this.chats = [{'id': 1, "description": "prueba"}, {'id': 2, "description": "prueba2"}];
         this.messages = [];
@@ -107,23 +121,28 @@ export class ChatComponent implements OnInit {
 
 
     }
-    action(event) {
+    action(data) {
+        console.log(data);
+        this.resFlag = true;
+        let reference = this;  
+       
         console.log("function called");
         this.pubnub.publish({
             channel: this.channel,
             message: {
                 "id": 1,
-                "text": "texto enviado",
+                "text": data.value,
                 "date": new Date()
             }
-        }/*,
+        },
             (status, response) => {
                 if (status.error) {
                     console.log(status);
                 } else {
                     console.log('message Published w/ timetoken', response.timetoken);
+                    $("#message-boxID").val(" ");
                 }
-            }*/
+            }
         );
 
         /*  var m = this.pubnub.getMessage(this.channel, function(msg) {
@@ -132,8 +151,22 @@ export class ChatComponent implements OnInit {
           });
   
          console.log(m);*/
+         
+         
     }
 
+    actionOnEnter($event, messagebox) {
+        if ($event.which === 13) { // ENTER_KEY
+            this.action(messagebox);
+        }
+    }
+
+    update() {
+        console.log("DD");
+        this.resFlag = false;
+        this.newUser = false;
+        this.exitedUser = false;
+    }
 
 
     // Fetching a uniq random avatar from the robohash.org service.

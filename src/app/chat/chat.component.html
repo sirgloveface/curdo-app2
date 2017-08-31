@@ -1,21 +1,64 @@
 <div>
-    <ul class="collection">
-        <li class="collection-item avatar" *ngFor="let chat of chats">
-                   <img src="//robohash.org/1?set=set2&bgset=bg2&size=70x70"  class="circle">
-                   <span class="title">#{{ chat.id }}</span>                
-                   <p>
-                       <i class="prefix mdi-action-alarm"></i>
-                       <span class="message-date">{{ chat.description }}</span>
-                       <br/>
-                   </p>
+
+    <div class="firstSubChild contain">
+        <div class="header">
+            <h2>Messages</h2>
+            <div class="chat-box">   
+                <div class="message-box">
                    
-       </li>
-    </ul>
-    
-    <br/>
-    <button (click)="action($event)" > enviar</button>
- 
-    <ul *ngFor="let item of messages">
-        <li>xxx{{ item.message.text }}</li>
-    </ul>  
+                    <div class="enter-message">
+                        <input id="message-boxID" #messagebox placeholder="Type your message here" (keyup)="actionOnEnter($event, messagebox)"  (keydown)="update()" autocomplete="off" value="" autofocus required>
+                        <button class="send" (click)="action(messagebox)" >Send</button>
+                    </div>
+                     <div>
+                        <ul id="messages" class="message"></ul>
+                        <ul class="collection">
+                            <li class="collection-item avatar" *ngFor="let item of messages">
+                                <img src="//robohash.org/{{ item.message.id }}?set=set2&bgset=bg2&size=70x70"  class="circle">
+                                <span class="title">#{{ item.message.id }}</span>                
+                                <p>
+                                    <i class="prefix mdi-action-alarm"></i>
+                                    <span class="message-date">{{item.message.date | date: 'dd/MM/yyyy'}}:{{ item.message.text }}</span>
+                                    <br/>
+                                </p>        
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="secondSubChild">
+        <div class=user-alert>
+            <div id="newUserID" *ngIf="newUser">
+                {{newUserName}} joined Chat!
+            </div>
+            <div id="leftUserID" *ngIf="exitedUser">
+                {{exitedUserName}} left the Chat!
+            </div>
+        </div>
+        <div class="caption">
+            <h2>Connected Users</h2>
+        </div>
+        <div class="user-list">
+            <ul class="user-list-ul">
+                <li *ngFor="let name of clientsNameList" class="user-list__item">
+                    <div>
+                        <input class="check-box" type="checkbox" [checked]="true" disabled>
+                    </div>
+                    <div class="user-list__content">
+                        <div class="user-list__name">
+                            <div class="text text_size_m">{{name}}</div>
+                        </div>
+                    </div>                
+                </li>
+            </ul>
+        </div>
+        <div id="resID" *ngIf="resFlag">
+            this is the server response : {{response}}
+        </div>     
+    </div>
 </div>

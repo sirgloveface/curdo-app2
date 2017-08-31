@@ -598,7 +598,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/chat/chat.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    <ul class=\"collection\">\r\n        <li class=\"collection-item avatar\" *ngFor=\"let chat of chats\">\r\n                   <img src=\"//robohash.org/1?set=set2&bgset=bg2&size=70x70\"  class=\"circle\">\r\n                   <span class=\"title\">#{{ chat.id }}</span>                \r\n                   <p>\r\n                       <i class=\"prefix mdi-action-alarm\"></i>\r\n                       <span class=\"message-date\">{{ chat.description }}</span>\r\n                       <br/>\r\n                   </p>\r\n                   \r\n       </li>\r\n    </ul>\r\n    \r\n    <br/>\r\n    <button (click)=\"action($event)\" > enviar</button>\r\n \r\n    <ul *ngFor=\"let item of messages\">\r\n        <li>xxx{{ item.message.text }}</li>\r\n    </ul>  \r\n</div>"
+module.exports = "<div>\r\n\r\n    <div class=\"firstSubChild contain\">\r\n        <div class=\"header\">\r\n            <h2>Messages</h2>\r\n            <div class=\"chat-box\">   \r\n                <div class=\"message-box\">\r\n                    <div>\r\n                        <ul id=\"messages\" class=\"message\"></ul>\r\n                        <ul class=\"collection\">\r\n                            <li class=\"collection-item avatar\" *ngFor=\"let item of messages\">\r\n                                <img src=\"//robohash.org/{{ item.message.id }}?set=set2&bgset=bg2&size=70x70\"  class=\"circle\">\r\n                                <span class=\"title\">#{{ item.message.id }}</span>                \r\n                                <p>\r\n                                    <i class=\"prefix mdi-action-alarm\"></i>\r\n                                    <span class=\"message-date\">{{item.message.date | date: 'dd/MM/yyyy'}}:{{ item.message.text }}</span>\r\n                                    <br/>\r\n                                </p>        \r\n                            </li>\r\n                        </ul>\r\n                    </div>\r\n                    <div class=\"enter-message\">\r\n                        <input id=\"message-boxID\" #messagebox placeholder=\"Type your message here\" (keyup)=\"actionOnEnter($event, messagebox)\"  (keydown)=\"update()\" autocomplete=\"off\" value=\"\" autofocus required>\r\n                        <button class=\"send\" (click)=\"action(messagebox)\" >Send</button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n\r\n\r\n    <div class=\"secondSubChild\">\r\n        <div class=user-alert>\r\n            <div id=\"newUserID\" *ngIf=\"newUser\">\r\n                {{newUserName}} joined Chat!\r\n            </div>\r\n            <div id=\"leftUserID\" *ngIf=\"exitedUser\">\r\n                {{exitedUserName}} left the Chat!\r\n            </div>\r\n        </div>\r\n        <div class=\"caption\">\r\n            <h2>Connected Users</h2>\r\n        </div>\r\n        <div class=\"user-list\">\r\n            <ul class=\"user-list-ul\">\r\n                <li *ngFor=\"let name of clientsNameList\" class=\"user-list__item\">\r\n                    <div>\r\n                        <input class=\"check-box\" type=\"checkbox\" [checked]=\"true\" disabled>\r\n                    </div>\r\n                    <div class=\"user-list__content\">\r\n                        <div class=\"user-list__name\">\r\n                            <div class=\"text text_size_m\">{{name}}</div>\r\n                        </div>\r\n                    </div>                \r\n                </li>\r\n            </ul>\r\n        </div>\r\n        <div id=\"resID\" *ngIf=\"resFlag\">\r\n            this is the server response : {{response}}\r\n        </div>     \r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -623,6 +623,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var ChatComponent = (function () {
     function ChatComponent(pubnub) {
+        this.resFlag = false;
+        this.newUser = false;
+        this.exitedUser = false;
+        this.newUserName = null;
+        this.exitedUserName = null;
+        this.sentMessageUsername = null;
+        this.msgCount = 0;
+        var reference = this;
+        var temp;
         var user = 'web-client_' + new Date();
         this.chats = [{ 'id': 1, "description": "prueba" }, { 'id': 2, "description": "prueba2" }];
         this.messages = [];
@@ -704,29 +713,44 @@ var ChatComponent = (function () {
               });
           }, 1000000000000000000);*/
     };
-    ChatComponent.prototype.action = function (event) {
+    ChatComponent.prototype.action = function (data) {
+        console.log(data);
+        this.resFlag = true;
+        var reference = this;
         console.log("function called");
         this.pubnub.publish({
             channel: this.channel,
             message: {
                 "id": 1,
-                "text": "texto enviado",
+                "text": data.value,
                 "date": new Date()
             }
-        } /*,
-            (status, response) => {
-                if (status.error) {
-                    console.log(status);
-                } else {
-                    console.log('message Published w/ timetoken', response.timetoken);
-                }
-            }*/);
+        }, function (status, response) {
+            if (status.error) {
+                console.log(status);
+            }
+            else {
+                console.log('message Published w/ timetoken', response.timetoken);
+                $("#message-boxID").val(" ");
+            }
+        });
         /*  var m = this.pubnub.getMessage(this.channel, function(msg) {
               console.log(msg);
               this.arreglo.unshift(msg.message);
           });
   
          console.log(m);*/
+    };
+    ChatComponent.prototype.actionOnEnter = function ($event, messagebox) {
+        if ($event.which === 13) {
+            this.action(messagebox);
+        }
+    };
+    ChatComponent.prototype.update = function () {
+        console.log("DD");
+        this.resFlag = false;
+        this.newUser = false;
+        this.exitedUser = false;
     };
     // Fetching a uniq random avatar from the robohash.org service.
     ChatComponent.prototype.avatarUrl = function () {
