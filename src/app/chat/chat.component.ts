@@ -42,18 +42,7 @@ export class ChatComponent implements OnInit {
             uuid: user
 
         });
-        this.pubnub.subscribe({
-            channels: [this.channel],
-            withPresence: true,
-            triggerEvents: ['message', 'presence', 'status'],
-            uuid: user,
-            heartbeatInterval: 30 // the frequency of ping from client to server
-        });
-        
-        this.messages = this.pubnub.getMessage(this.channel, function(msg) {
-            console.log(msg.message);
-            console.log(msg);
-        });    
+
         /*var mensaje = this.pubnub.getMessage('conect-arduino', function (msg) {
             console.log("mensaje");
             console.log(msg.message);
@@ -66,7 +55,13 @@ export class ChatComponent implements OnInit {
         this.pubnub.getStatus('conect-arduino', function (st) {
             console.log("presence");
         });*/
-
+        this.pubnub.subscribe({
+            channels: [this.channel],
+            withPresence: true,
+            triggerEvents: ['message', 'presence', 'status'],
+            uuid: user,
+            heartbeatInterval: 30 // the frequency of ping from client to server
+        });
         this.pubnub.addListener({
             message: function (m) {
                 // handle message
@@ -90,7 +85,10 @@ export class ChatComponent implements OnInit {
                 var service = p.service; // service
                 var uuids = p.uuids;  // UUIDs of users who are connected with the channel with their state
                 var occupancy = p.occupancy; // No. of users connected with the channel
-
+                console.log("presence");
+                console.log(p);
+                this.response = "Conectado" + uuids;
+                this.resFlag =  true;
             },
             status: function (s) {
                 // handle status
@@ -104,6 +102,11 @@ export class ChatComponent implements OnInit {
 
             }
         });
+  
+        this.messages = this.pubnub.getMessage(this.channel, function(msg) {
+            console.log(msg.message);
+            console.log(msg);
+        });    
 
     }
     ngOnInit() {

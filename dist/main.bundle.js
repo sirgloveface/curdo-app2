@@ -598,7 +598,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/chat/chat.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n\r\n    <div class=\"firstSubChild contain\">\r\n        <div class=\"header\">\r\n            <h2>Messages</h2>\r\n            <div class=\"chat-box\">   \r\n                <div class=\"message-box\">\r\n                    <div>\r\n                        <ul id=\"messages\" class=\"message\"></ul>\r\n                        <ul class=\"collection\">\r\n                            <li class=\"collection-item avatar\" *ngFor=\"let item of messages\">\r\n                                <img src=\"//robohash.org/{{ item.message.id }}?set=set2&bgset=bg2&size=70x70\"  class=\"circle\">\r\n                                <span class=\"title\">#{{ item.message.id }}</span>                \r\n                                <p>\r\n                                    <i class=\"prefix mdi-action-alarm\"></i>\r\n                                    <span class=\"message-date\">{{item.message.date | date: 'dd/MM/yyyy'}}:{{ item.message.text }}</span>\r\n                                    <br/>\r\n                                </p>        \r\n                            </li>\r\n                        </ul>\r\n                    </div>\r\n                    <div class=\"enter-message\">\r\n                        <input id=\"message-boxID\" #messagebox placeholder=\"Type your message here\" (keyup)=\"actionOnEnter($event, messagebox)\"  (keydown)=\"update()\" autocomplete=\"off\" value=\"\" autofocus required>\r\n                        <button class=\"send\" (click)=\"action(messagebox)\" >Send</button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n\r\n\r\n    <div class=\"secondSubChild\">\r\n        <div class=user-alert>\r\n            <div id=\"newUserID\" *ngIf=\"newUser\">\r\n                {{newUserName}} joined Chat!\r\n            </div>\r\n            <div id=\"leftUserID\" *ngIf=\"exitedUser\">\r\n                {{exitedUserName}} left the Chat!\r\n            </div>\r\n        </div>\r\n        <div class=\"caption\">\r\n            <h2>Connected Users</h2>\r\n        </div>\r\n        <div class=\"user-list\">\r\n            <ul class=\"user-list-ul\">\r\n                <li *ngFor=\"let name of clientsNameList\" class=\"user-list__item\">\r\n                    <div>\r\n                        <input class=\"check-box\" type=\"checkbox\" [checked]=\"true\" disabled>\r\n                    </div>\r\n                    <div class=\"user-list__content\">\r\n                        <div class=\"user-list__name\">\r\n                            <div class=\"text text_size_m\">{{name}}</div>\r\n                        </div>\r\n                    </div>                \r\n                </li>\r\n            </ul>\r\n        </div>\r\n        <div id=\"resID\" *ngIf=\"resFlag\">\r\n            this is the server response : {{response}}\r\n        </div>     \r\n    </div>\r\n</div>\r\n"
+module.exports = "<div>\r\n\r\n    <div class=\"firstSubChild contain\">\r\n        <div class=\"header\">\r\n            <h2>Messages</h2>\r\n            <div class=\"chat-box\">   \r\n                <div class=\"message-box\">\r\n                   \r\n                    <div class=\"enter-message\">\r\n                        <input id=\"message-boxID\" #messagebox placeholder=\"Type your message here\" (keyup)=\"actionOnEnter($event, messagebox)\"  (keydown)=\"update()\" autocomplete=\"off\" value=\"\" autofocus required>\r\n                        <button class=\"send\" (click)=\"action(messagebox)\" >Send</button>\r\n                    </div>\r\n                     <div>\r\n                        <ul id=\"messages\" class=\"message\"></ul>\r\n                        <ul class=\"collection\">\r\n                            <li class=\"collection-item avatar\" *ngFor=\"let item of messages\">\r\n                                <img src=\"//robohash.org/{{ item.message.id }}?set=set2&bgset=bg2&size=70x70\"  class=\"circle\">\r\n                                <span class=\"title\">#{{ item.message.id }}</span>                \r\n                                <p>\r\n                                    <i class=\"prefix mdi-action-alarm\"></i>\r\n                                    <span class=\"message-date\">{{item.message.date | date: 'dd/MM/yyyy'}}:{{ item.message.text }}</span>\r\n                                    <br/>\r\n                                </p>        \r\n                            </li>\r\n                        </ul>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n\r\n\r\n    <div class=\"secondSubChild\">\r\n        <div class=user-alert>\r\n            <div id=\"newUserID\" *ngIf=\"newUser\">\r\n                {{newUserName}} joined Chat!\r\n            </div>\r\n            <div id=\"leftUserID\" *ngIf=\"exitedUser\">\r\n                {{exitedUserName}} left the Chat!\r\n            </div>\r\n        </div>\r\n        <div class=\"caption\">\r\n            <h2>Connected Users</h2>\r\n        </div>\r\n        <div class=\"user-list\">\r\n            <ul class=\"user-list-ul\">\r\n                <li *ngFor=\"let name of clientsNameList\" class=\"user-list__item\">\r\n                    <div>\r\n                        <input class=\"check-box\" type=\"checkbox\" [checked]=\"true\" disabled>\r\n                    </div>\r\n                    <div class=\"user-list__content\">\r\n                        <div class=\"user-list__name\">\r\n                            <div class=\"text text_size_m\">{{name}}</div>\r\n                        </div>\r\n                    </div>                \r\n                </li>\r\n            </ul>\r\n        </div>\r\n        <div id=\"resID\" *ngIf=\"resFlag\">\r\n            this is the server response : {{response}}\r\n        </div>     \r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -643,17 +643,6 @@ var ChatComponent = (function () {
             subscribeKey: 'sub-c-af6ff0d2-6a8d-11e7-9bf2-0619f8945a4f',
             uuid: user
         });
-        this.pubnub.subscribe({
-            channels: [this.channel],
-            withPresence: true,
-            triggerEvents: ['message', 'presence', 'status'],
-            uuid: user,
-            heartbeatInterval: 30 // the frequency of ping from client to server
-        });
-        this.messages = this.pubnub.getMessage(this.channel, function (msg) {
-            console.log(msg.message);
-            console.log(msg);
-        });
         /*var mensaje = this.pubnub.getMessage('conect-arduino', function (msg) {
             console.log("mensaje");
             console.log(msg.message);
@@ -666,6 +655,13 @@ var ChatComponent = (function () {
         this.pubnub.getStatus('conect-arduino', function (st) {
             console.log("presence");
         });*/
+        this.pubnub.subscribe({
+            channels: [this.channel],
+            withPresence: true,
+            triggerEvents: ['message', 'presence', 'status'],
+            uuid: user,
+            heartbeatInterval: 30 // the frequency of ping from client to server
+        });
         this.pubnub.addListener({
             message: function (m) {
                 // handle message
@@ -688,6 +684,10 @@ var ChatComponent = (function () {
                 var service = p.service; // service
                 var uuids = p.uuids; // UUIDs of users who are connected with the channel with their state
                 var occupancy = p.occupancy; // No. of users connected with the channel
+                console.log("presence");
+                console.log(p);
+                this.response = "Conectado" + uuids;
+                this.resFlag = true;
             },
             status: function (s) {
                 // handle status
@@ -699,6 +699,10 @@ var ChatComponent = (function () {
                 var lastTimetoken = s.lastTimetoken; // The last timetoken used in the subscribe request, of type long.
                 var currentTimetoken = s.currentTimetoken; // The current timetoken fetched in the subscribe response, which is going to be used in the next request, of type long.
             }
+        });
+        this.messages = this.pubnub.getMessage(this.channel, function (msg) {
+            console.log(msg.message);
+            console.log(msg);
         });
     }
     ChatComponent.prototype.ngOnInit = function () {
