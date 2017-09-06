@@ -23,7 +23,6 @@ export class ChatComponent implements OnInit {
     sentMessageUsername: string = null;
     response: string;
     clientsNameList: number[];
-    message: string;
     msgCount: number = 0;
     
 
@@ -33,14 +32,13 @@ export class ChatComponent implements OnInit {
         var user = 'web-client_' + new Date();
         this.chats = [{'id': 1, "description": "prueba"}, {'id': 2, "description": "prueba2"}];
         this.messages = [];
-        this.messages.push({"id": 1, "text": "Tony Garcixa", "date": new Date()});
         this.channel = 'conect-arduino';
         this.pubnub = pubnub;
         this.pubnub.init({
             publishKey: 'pub-c-24150dba-a538-4de7-af26-643500dd957d',
             subscribeKey: 'sub-c-af6ff0d2-6a8d-11e7-9bf2-0619f8945a4f',
-            uuid: user
-
+            uuid: user,
+            ssl:true
         });
 
         /*var mensaje = this.pubnub.getMessage('conect-arduino', function (msg) {
@@ -99,46 +97,32 @@ export class ChatComponent implements OnInit {
                 var affectedChannelGroups = s.affectedChannelGroups; // The channel groups affected in the operation, of type array.
                 var lastTimetoken = s.lastTimetoken; // The last timetoken used in the subscribe request, of type long.
                 var currentTimetoken = s.currentTimetoken; // The current timetoken fetched in the subscribe response, which is going to be used in the next request, of type long.
-
             }
         });
   
         this.messages = this.pubnub.getMessage(this.channel, function(msg) {
-            console.log(msg.message);
             console.log(msg);
         });    
 
     }
     ngOnInit() {
-        /* setInterval(() => {
-              let hw = 'Hello World, ' + Date.now();
-              this.pubnub.publish({
-                  channel: this.channel,
-                  message: {
-                      "id": 1,
-                      "text": hw
-                  }
-              });
-          }, 1000000000000000000);*/
-
-
-
+        
     }
     action(data) {
         console.log(data);
         this.resFlag = true;
         let reference = this;  
-       
         console.log("function called");
         this.pubnub.publish({
             channel: this.channel,
             message: {
                 "id": 1,
                 "text": data.value,
-                "date": new Date()
+                "date": new Date(),
+                "tweet" : data.value
             }
         },
-            (status, response) => {
+        (status, response) => {
                 if (status.error) {
                     console.log(status);
                 } else {
@@ -146,16 +130,7 @@ export class ChatComponent implements OnInit {
                     $("#message-boxID").val(" ");
                 }
             }
-        );
-
-        /*  var m = this.pubnub.getMessage(this.channel, function(msg) {
-              console.log(msg);
-              this.arreglo.unshift(msg.message);
-          });
-  
-         console.log(m);*/
-         
-         
+        );   
     }
 
     actionOnEnter($event, messagebox) {

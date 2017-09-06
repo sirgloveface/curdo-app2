@@ -9,3 +9,6 @@ ng g service chat
 ng g c chat
 ng g component chat
 
+//Comando para build y comer con nodemon
+ng build
+nodemon
