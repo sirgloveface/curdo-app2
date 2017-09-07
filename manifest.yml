@@ -1,0 +1,9 @@
+---
+applications:
+- name: petCurdoApi2
+  memory: 128M
+  instances: 1
+  host: petCurdoApi2
+  command:  node ./bin/www
+  
+  

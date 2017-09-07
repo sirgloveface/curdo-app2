@@ -109,10 +109,9 @@ export class ChatComponent implements OnInit {
         
     }
     action(data) {
-        console.log(data);
+        //console.log(data);
         this.resFlag = true;
         let reference = this;  
-        console.log("function called");
         this.pubnub.publish({
             channel: this.channel,
             message: {

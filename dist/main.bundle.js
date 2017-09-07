@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<H1>PubNub Angular2 SDK Demo</H1>\r\n<router-outlet></router-outlet>\r\n\r\n"
+module.exports = "<H1>Curdo App</H1>\r\n<router-outlet></router-outlet>\r\n\r\n"
 
 /***/ }),
 
@@ -707,10 +707,9 @@ var ChatComponent = (function () {
     ChatComponent.prototype.ngOnInit = function () {
     };
     ChatComponent.prototype.action = function (data) {
-        console.log(data);
+        //console.log(data);
         this.resFlag = true;
         var reference = this;
-        console.log("function called");
         this.pubnub.publish({
             channel: this.channel,
             message: {
