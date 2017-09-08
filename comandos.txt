@@ -23,4 +23,6 @@ cf push petCurdoApi -c "node server.js"
 cf apps
 // Listar services
 cf services
+// Setear variables en pivotal
+cf set-env petCurdoApi2 env1 val1, env2 "val 2" 
 
