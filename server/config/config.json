@@ -1,0 +1,18 @@
+{
+    "development": {
+        "username": "mattveso",
+        "password": "EoQSBnjPQRmONUw1H4sXK3lQD-YJQKpB",
+        "database": "mattveso",
+        "host": "pellefant.db.elephantsql.com",
+        "port": 5432,
+        "dialect": "postgres"
+},
+    "test": {
+        "username": "postgres",
+        "password": "tony1983",
+        "database": "apicurdo",
+        "host": "127.0.0.1",
+        "port": 5432,
+        "dialect": "postgres"
+}
+}

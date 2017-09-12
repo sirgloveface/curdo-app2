@@ -5,6 +5,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 var book = require('./routes/book');
+var message = require('./routes/message');
 var app = express();
 
 app.use(logger('dev'));
@@ -15,9 +16,13 @@ app.use('/node_modules', express.static(__dirname + '/node_modules/'));
 app.use(express.static(path.join(__dirname, 'app')));
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 
-
+require('./server/routes')(app);
+app.get('*', (req, res) => res.status(200).send({
+    message: 'Welcome to the beginning of nothingness.',
+}));
 
 app.use('/book', book);
+app.use('/message', message);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
