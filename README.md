@@ -5,6 +5,9 @@ Version 2 de la aplicacion de curdo
 
 npm install --save sequelize
 npm install --save pg pg-hstore
+npm install --save pubnub
+npm install --save bluebird
+npm install --save promise
 
 ## How to run the app locally
 
