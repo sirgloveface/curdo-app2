@@ -11,7 +11,7 @@
         "username": "postgres",
         "password": "tony1983",
         "database": "apicurdo",
-        "host": "127.0.0.1",
+        "host": "localhost1",
         "port": 5432,
         "dialect": "postgres"
 }
