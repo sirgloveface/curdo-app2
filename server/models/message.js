@@ -8,12 +8,14 @@ function messageModel (options) {
 
     return {
             create: function (done) {
+                var r;
                db.query('SELECT * FROM log', [], (err, res) => {
                     if (err) {
                         throw err
                     }
-                }, done);
-
+                  r = [{"id":"dd"},{"id":"dd"}];
+                });
+                return r;
         }
     }
 }
