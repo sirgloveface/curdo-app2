@@ -18,7 +18,7 @@ SET row_security = off;
 
 --
 -- TOC entry 1 (class 3079 OID 12387)
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner:
 --
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
@@ -27,7 +27,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 --
 -- TOC entry 2129 (class 0 OID 0)
 -- Dependencies: 1
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner:
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
@@ -60,11 +60,11 @@ ALTER TABLE log OWNER TO postgres;
 --
 
 CREATE SEQUENCE "Logs_id_log_seq"
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+START WITH 1
+INCREMENT BY 1
+NO MINVALUE
+NO MAXVALUE
+CACHE 1;
 
 
 ALTER TABLE "Logs_id_log_seq" OWNER TO postgres;
@@ -95,14 +95,6 @@ ALTER TABLE ONLY log ALTER COLUMN id_log SET DEFAULT nextval('"Logs_id_log_seq"'
 SELECT pg_catalog.setval('"Logs_id_log_seq"', 1, false);
 
 
---
--- TOC entry 2121 (class 0 OID 16394)
--- Dependencies: 185
--- Data for Name: log; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY log (id_log, identifier, fecha) FROM stdin;
-\.
 
 
 --
