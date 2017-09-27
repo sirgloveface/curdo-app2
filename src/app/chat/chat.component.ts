@@ -14,7 +14,7 @@ export class ChatComponent implements OnInit {
     pubnub: PubNubAngular;
     channel: string;
     messages: any;
-    public items: Array<string>;
+    public items: Array<string>
     resFlag: boolean = false;
     newUser: boolean = false;
     exitedUser: boolean = false;

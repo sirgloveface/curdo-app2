@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<H1>Curdo App</H1>\n<router-outlet></router-outlet>\n\n"
+module.exports = "<H1>Curdo App</H1>\r\n<router-outlet></router-outlet>\r\n\r\n"
 
 /***/ }),
 
@@ -70,7 +70,7 @@ var AppComponent = (function () {
     ], AppComponent);
     return AppComponent;
 }());
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/app.component.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/app.component.js.map
 
 /***/ }),
 
@@ -152,7 +152,7 @@ var AppModule = (function () {
     ], AppModule);
     return AppModule;
 }());
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/app.module.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/app.module.js.map
 
 /***/ }),
 
@@ -177,7 +177,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/book-create/book-create.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1>Add New Book</h1>\n  <div class=\"row\">\n    <div class=\"col-md-6\">\n      <form (ngSubmit)=\"saveBook()\" #bookForm=\"ngForm\">\n        <div class=\"form-group\">\n          <label for=\"name\">ISBN</label>\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.isbn\" name=\"isbn\" required>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"name\">Title</label>\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.title\" name=\"title\" required>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"name\">Author</label>\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.author\" name=\"author\" required>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"name\">Publisher</label>\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.publisher\" name=\"publisher\" required>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"name\">Price</label>\n          <input type=\"number\" class=\"form-control\" [(ngModel)]=\"book.price\" name=\"price\" required>\n        </div>\n        <div class=\"form-group\">\n          <button type=\"submit\" class=\"btn btn-success\" [disabled]=\"!bookForm.form.valid\">Save</button>\n        </div>\n      </form>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n  <h1>Add New Book</h1>\r\n  <div class=\"row\">\r\n    <div class=\"col-md-6\">\r\n      <form (ngSubmit)=\"saveBook()\" #bookForm=\"ngForm\">\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">ISBN</label>\r\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.isbn\" name=\"isbn\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">Title</label>\r\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.title\" name=\"title\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">Author</label>\r\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.author\" name=\"author\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">Publisher</label>\r\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.publisher\" name=\"publisher\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">Price</label>\r\n          <input type=\"number\" class=\"form-control\" [(ngModel)]=\"book.price\" name=\"price\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <button type=\"submit\" class=\"btn btn-success\" [disabled]=\"!bookForm.form.valid\">Save</button>\r\n        </div>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -229,7 +229,7 @@ var BookCreateComponent = (function () {
     return BookCreateComponent;
     var _a, _b;
 }());
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/book-create.component.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/book-create.component.js.map
 
 /***/ }),
 
@@ -254,7 +254,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/book-detail/book-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1>{{ book.title }}</h1>\n  <dl class=\"list\">\n    <dt>ISBN</dt>\n    <dd>{{ book.isbn }}</dd>\n    <dt>Author</dt>\n    <dd>{{ book.author }}</dd>\n    <dt>Publisher</dt>\n    <dd>{{ book.publisher }}</dd>\n    <dt>Price</dt>\n    <dd>{{ book.price }}</dd>\n    <dt>Update Date</dt>\n    <dd>{{ book.updated_at }}</dd>\n  </dl>\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <a [routerLink]=\"['/book-edit', book._id]\" class=\"btn btn-success\">EDIT</a>\n      <button class=\"btn btn-danger\" type=\"button\" (click)=\"deleteBook(book._id)\">DELETE</button>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n  <h1>{{ book.title }}</h1>\r\n  <dl class=\"list\">\r\n    <dt>ISBN</dt>\r\n    <dd>{{ book.isbn }}</dd>\r\n    <dt>Author</dt>\r\n    <dd>{{ book.author }}</dd>\r\n    <dt>Publisher</dt>\r\n    <dd>{{ book.publisher }}</dd>\r\n    <dt>Price</dt>\r\n    <dd>{{ book.price }}</dd>\r\n    <dt>Update Date</dt>\r\n    <dd>{{ book.updated_at }}</dd>\r\n  </dl>\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <a [routerLink]=\"['/book-edit', book._id]\" class=\"btn btn-success\">EDIT</a>\r\n      <button class=\"btn btn-danger\" type=\"button\" (click)=\"deleteBook(book._id)\">DELETE</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -316,7 +316,7 @@ var BookDetailComponent = (function () {
     return BookDetailComponent;
     var _a, _b, _c;
 }());
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/book-detail.component.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/book-detail.component.js.map
 
 /***/ }),
 
@@ -341,7 +341,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/book-edit/book-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1>Edit Book</h1>\n  <div class=\"row\">\n    <div class=\"col-md-6\">\n      <form (ngSubmit)=\"updateBook(book._id)\" #bookForm=\"ngForm\">\n        <div class=\"form-group\">\n          <label for=\"name\">ISBN</label>\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.isbn\" name=\"isbn\" required>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"name\">Title</label>\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.title\" name=\"title\" required>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"name\">Author</label>\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.author\" name=\"author\" required>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"name\">Publisher</label>\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.publisher\" name=\"publisher\" required>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"name\">Price</label>\n          <input type=\"number\" class=\"form-control\" [(ngModel)]=\"book.price\" name=\"price\" required>\n        </div>\n        <div class=\"form-group\">\n          <button type=\"submit\" class=\"btn btn-success\" [disabled]=\"!bookForm.form.valid\">Update</button>\n        </div>\n      </form>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n  <h1>Edit Book</h1>\r\n  <div class=\"row\">\r\n    <div class=\"col-md-6\">\r\n      <form (ngSubmit)=\"updateBook(book._id)\" #bookForm=\"ngForm\">\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">ISBN</label>\r\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.isbn\" name=\"isbn\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">Title</label>\r\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.title\" name=\"title\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">Author</label>\r\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.author\" name=\"author\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">Publisher</label>\r\n          <input type=\"text\" class=\"form-control\" [(ngModel)]=\"book.publisher\" name=\"publisher\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"name\">Price</label>\r\n          <input type=\"number\" class=\"form-control\" [(ngModel)]=\"book.price\" name=\"price\" required>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <button type=\"submit\" class=\"btn btn-success\" [disabled]=\"!bookForm.form.valid\">Update</button>\r\n        </div>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -404,7 +404,7 @@ var BookEditComponent = (function () {
     return BookEditComponent;
     var _a, _b, _c;
 }());
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/book-edit.component.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/book-edit.component.js.map
 
 /***/ }),
 
@@ -499,7 +499,7 @@ var BookService = (function () {
     return BookService;
     var _a;
 }());
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/book.service.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/book.service.js.map
 
 /***/ }),
 
@@ -524,7 +524,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/book/book.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1>Book Catalogue\n    <a [routerLink]=\"['/book-create']\" class=\"btn btn-default btn-lg\">\n      <span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span>\n    </a>\n  </h1>\n  <table class=\"table\">\n    <thead>\n      <tr>\n        <th>Title</th>\n        <th>Author</th>\n        <th>Action</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let book of books\">\n        <td>{{ book.title }}</td>\n        <td>{{ book.author }}</td>\n        <td><a [routerLink]=\"['/book-details', book._id]\">Show Details</a></td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n  <h1>Book Catalogue\r\n    <a [routerLink]=\"['/book-create']\" class=\"btn btn-default btn-lg\">\r\n      <span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span>\r\n    </a>\r\n  </h1>\r\n  <table class=\"table\">\r\n    <thead>\r\n      <tr>\r\n        <th>Title</th>\r\n        <th>Author</th>\r\n        <th>Action</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let book of books\">\r\n        <td>{{ book.title }}</td>\r\n        <td>{{ book.author }}</td>\r\n        <td><a [routerLink]=\"['/book-details', book._id]\">Show Details</a></td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -573,7 +573,7 @@ var BookComponent = (function () {
     return BookComponent;
     var _a;
 }());
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/book.component.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/book.component.js.map
 
 /***/ }),
 
@@ -598,7 +598,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/chat/chat.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n\n    <div class=\"firstSubChild contain\">\n        <div class=\"header\">\n            <h2>Messages</h2>\n            <div class=\"chat-box\">   \n                <div class=\"message-box\">\n                   \n                    <div class=\"enter-message\">\n                        <input id=\"message-boxID\" #messagebox placeholder=\"Type your message here\" (keyup)=\"actionOnEnter($event, messagebox)\"  (keydown)=\"update()\" autocomplete=\"off\" value=\"\" autofocus required>\n                        <button class=\"send\" (click)=\"action(messagebox)\" >Send</button>\n                    </div>\n                     <div>\n                        <ul id=\"messages\" class=\"message\"></ul>\n                        <ul class=\"collection\">\n                            <li class=\"collection-item avatar\" *ngFor=\"let item of messages.slice().reverse()\">\n                                <img src=\"//robohash.org/{{ item.message.id }}?set=set2&bgset=bg2&size=70x70\"  class=\"circle\">\n                                <span class=\"title\">#{{ item.message.id }}</span> \n                                <div>{{item.message.tweet}} <b>{{item.message.twtr_response.id}}</b></div>\n                                <p>\n                                    <i class=\"prefix mdi-action-alarm\"></i>\n                                    <span class=\"message-date\">{{item.message.date | date: 'dd/MM/yyyy'}}:{{ item.message.text }}</span>\n                                    <br/>\n                                </p>        \n                            </li>\n                        </ul>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n\n\n\n    <div class=\"secondSubChild\">\n        <div class=user-alert>\n            <div id=\"newUserID\" *ngIf=\"newUser\">\n                {{newUserName}} joined Chat!\n            </div>\n            <div id=\"leftUserID\" *ngIf=\"exitedUser\">\n                {{exitedUserName}} left the Chat!\n            </div>\n        </div>\n        <div class=\"caption\">\n            <h2>Connected Users</h2>\n        </div>\n        <div class=\"user-list\">\n            <ul class=\"user-list-ul\">\n                <li *ngFor=\"let name of clientsNameList\" class=\"user-list__item\">\n                    <div>\n                        <input class=\"check-box\" type=\"checkbox\" [checked]=\"true\" disabled>\n                    </div>\n                    <div class=\"user-list__content\">\n                        <div class=\"user-list__name\">\n                            <div class=\"text text_size_m\">{{name}}</div>\n                        </div>\n                    </div>                \n                </li>\n            </ul>\n        </div>\n        <div id=\"resID\" *ngIf=\"resFlag\">\n            this is the server response : {{response}}\n        </div>     \n    </div>\n</div>\n"
+module.exports = "<div>\r\n\r\n    <div class=\"firstSubChild contain\">\r\n        <div class=\"header\">\r\n            <h2>Messages</h2>\r\n            <div class=\"chat-box\">   \r\n                <div class=\"message-box\">\r\n                   \r\n                    <div class=\"enter-message\">\r\n                        <input id=\"message-boxID\" #messagebox placeholder=\"Type your message here\" (keyup)=\"actionOnEnter($event, messagebox)\"  (keydown)=\"update()\" autocomplete=\"off\" value=\"\" autofocus required>\r\n                        <button class=\"send\" (click)=\"action(messagebox)\" >Send</button>\r\n                    </div>\r\n                     <div>\r\n                        <ul id=\"messages\" class=\"message\"></ul>\r\n                        <ul class=\"collection\">\r\n                            <li class=\"collection-item avatar\" *ngFor=\"let item of messages.slice().reverse()\">\r\n                                <img src=\"//robohash.org/{{ item.message.id }}?set=set2&bgset=bg2&size=70x70\"  class=\"circle\">\r\n                                <span class=\"title\">#{{ item.message.id }}</span> \r\n                                <div>{{item.message.tweet}} <b>{{item.message.twtr_response.id}}</b></div>\r\n                                <p>\r\n                                    <i class=\"prefix mdi-action-alarm\"></i>\r\n                                    <span class=\"message-date\">{{item.message.date | date: 'dd/MM/yyyy'}}:{{ item.message.text }}</span>\r\n                                    <br/>\r\n                                </p>        \r\n                            </li>\r\n                        </ul>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n\r\n\r\n    <div class=\"secondSubChild\">\r\n        <div class=user-alert>\r\n            <div id=\"newUserID\" *ngIf=\"newUser\">\r\n                {{newUserName}} joined Chat!\r\n            </div>\r\n            <div id=\"leftUserID\" *ngIf=\"exitedUser\">\r\n                {{exitedUserName}} left the Chat!\r\n            </div>\r\n        </div>\r\n        <div class=\"caption\">\r\n            <h2>Connected Users</h2>\r\n        </div>\r\n        <div class=\"user-list\">\r\n            <ul class=\"user-list-ul\">\r\n                <li *ngFor=\"let name of clientsNameList\" class=\"user-list__item\">\r\n                    <div>\r\n                        <input class=\"check-box\" type=\"checkbox\" [checked]=\"true\" disabled>\r\n                    </div>\r\n                    <div class=\"user-list__content\">\r\n                        <div class=\"user-list__name\">\r\n                            <div class=\"text text_size_m\">{{name}}</div>\r\n                        </div>\r\n                    </div>                \r\n                </li>\r\n            </ul>\r\n        </div>\r\n        <div id=\"resID\" *ngIf=\"resFlag\">\r\n            this is the server response : {{response}}\r\n        </div>     \r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -608,7 +608,7 @@ module.exports = "<div>\n\n    <div class=\"firstSubChild contain\">\n        <d
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_pubnub_angular2__ = __webpack_require__("../../../../pubnub-angular2/lib/pubnub-angular2.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_pubnub_angular2__ = __webpack_require__("../../../../pubnub-angular2/lib/pubnub-angular4.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_pubnub_angular2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_pubnub_angular2__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -755,7 +755,7 @@ var ChatComponent = (function () {
     return ChatComponent;
     var _a;
 }());
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/chat.component.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/chat.component.js.map
 
 /***/ }),
 
@@ -771,7 +771,7 @@ var ChatComponent = (function () {
 var environment = {
     production: false
 };
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/environment.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/environment.js.map
 
 /***/ }),
 
@@ -792,7 +792,7 @@ if (__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment *
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_28" /* enableProdMode */])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_3__app_app_module__["a" /* AppModule */]);
-//# sourceMappingURL=/home/tony/Desktop/curdoApi/curdo-app2/src/main.js.map
+//# sourceMappingURL=C:/Users/S5186398/Desktop/curdo/curdo-app2/src/main.js.map
 
 /***/ }),
 

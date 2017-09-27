@@ -3,17 +3,19 @@ Version 2 de la aplicacion de curdo
 
 **INSTALL**
 
-npm install --save sequelize
+npm install --save seq
+
 npm install --save pg pg-hstore
 npm install --save pubnub
 npm install --save bluebird
 npm install --save promise
+npm install pubnub-angular2 --save
 
 ## How to run the app locally
 
 **Builds Steps**
 ng build
-nodemon
+nodemo
 
 0. Optional: install a local Postgres
 
