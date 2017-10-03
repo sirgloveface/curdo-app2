@@ -10,6 +10,7 @@ declare var $ :any;
     providers: [PubNubAngular]
 })
 export class ChatComponent implements OnInit {
+
     chats: any;
     pubnub: PubNubAngular;
     channel: string;
@@ -25,6 +26,7 @@ export class ChatComponent implements OnInit {
     clientsNameList: number[];
     msgCount: number = 0;
     public temperature : number = 0.0;
+
 
     constructor(pubnub: PubNubAngular) {
         let reference = this;
@@ -99,23 +101,23 @@ export class ChatComponent implements OnInit {
                 var currentTimetoken = s.currentTimetoken; // The current timetoken fetched in the subscribe response, which is going to be used in the next request, of type long.
             }
         });
-  
+
         this.messages = this.pubnub.getMessage(this.channel, function(msg) {
             console.log(msg);
-        });    
+        });
 
     }
     ngOnInit() {
         
     }
     action(data) {
-        //console.log(data);
+        console.log(data.value);
         this.resFlag = true;
         let reference = this;  
         this.pubnub.publish({
             channel: this.channel,
             message: {
-                "id": 1,
+                "id": 2,
                 "text": data.value,
                 "date": new Date(),
                 "tweet" : data.value
@@ -125,7 +127,7 @@ export class ChatComponent implements OnInit {
                 if (status.error) {
                     console.log(status);
                 } else {
-                    console.log('message Published w/ timetoken', response.timetoken);
+                   // console.log('message Published w/ timetoken', response.timetoken);
                     $("#message-boxID").val(" ");
                 }
             }

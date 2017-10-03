@@ -96,13 +96,13 @@ export var ChatComponent = (function () {
     ChatComponent.prototype.ngOnInit = function () {
     };
     ChatComponent.prototype.action = function (data) {
-        //console.log(data);
+        console.log(data.value);
         this.resFlag = true;
         var reference = this;
         this.pubnub.publish({
             channel: this.channel,
             message: {
-                "id": 1,
+                "id": 2,
                 "text": data.value,
                 "date": new Date(),
                 "tweet": data.value
@@ -112,7 +112,7 @@ export var ChatComponent = (function () {
                 console.log(status);
             }
             else {
-                console.log('message Published w/ timetoken', response.timetoken);
+                // console.log('message Published w/ timetoken', response.timetoken);
                 $("#message-boxID").val(" ");
             }
         });

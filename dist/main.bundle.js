@@ -598,7 +598,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/chat/chat.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n\n    <div class=\"firstSubChild contain\">\n        <div class=\"header\">\n            <h2>Messages</h2>\n            <div class=\"chat-box\">   \n                <div class=\"message-box\">\n                   \n                    <div class=\"enter-message\">\n                        <input id=\"message-boxID\" #messagebox placeholder=\"Type your message here\" (keyup)=\"actionOnEnter($event, messagebox)\"  (keydown)=\"update()\" autocomplete=\"off\" value=\"\" autofocus required>\n                        <button class=\"send\" (click)=\"action(messagebox)\" >Send</button>\n                    </div>\n                     <div>\n                        <ul id=\"messages\" class=\"message\"></ul>\n                        <ul class=\"collection\">\n                            <li class=\"collection-item avatar\" *ngFor=\"let item of messages.slice().reverse()\">\n                                <img src=\"//robohash.org/{{ item.message.id }}?set=set2&bgset=bg2&size=70x70\"  class=\"circle\">\n                                <span class=\"title\">#{{ item.message.id }}</span> \n                                <div>{{item.message.tweet}} <b>{{item.message.twtr_response.id}}</b></div>\n                                <p>\n                                    <i class=\"prefix mdi-action-alarm\"></i>\n                                    <span class=\"message-date\">{{item.message.date | date: 'dd/MM/yyyy'}}:{{ item.message.text }}</span>\n                                    <br/>\n                                </p>        \n                            </li>\n                        </ul>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n\n\n\n    <div class=\"secondSubChild\">\n        <div class=user-alert>\n            <div id=\"newUserID\" *ngIf=\"newUser\">\n                {{newUserName}} joined Chat!\n            </div>\n            <div id=\"leftUserID\" *ngIf=\"exitedUser\">\n                {{exitedUserName}} left the Chat!\n            </div>\n        </div>\n        <div class=\"caption\">\n            <h2>Connected Users</h2>\n        </div>\n        <div class=\"user-list\">\n            <ul class=\"user-list-ul\">\n                <li *ngFor=\"let name of clientsNameList\" class=\"user-list__item\">\n                    <div>\n                        <input class=\"check-box\" type=\"checkbox\" [checked]=\"true\" disabled>\n                    </div>\n                    <div class=\"user-list__content\">\n                        <div class=\"user-list__name\">\n                            <div class=\"text text_size_m\">{{name}}</div>\n                        </div>\n                    </div>                \n                </li>\n            </ul>\n        </div>\n        <div id=\"resID\" *ngIf=\"resFlag\">\n            this is the server response : {{response}}\n        </div>     \n    </div>\n</div>\n"
+module.exports = "<div>\n    <div class=\"firstSubChild contain\">\n        <div class=\"header\">\n            <h2>Messages</h2>\n            <div class=\"chat-box\">   \n                <div class=\"message-box\">\n                    Temperatura: {{temperature}}\n                    <div class=\"enter-message\">\n                        <input id=\"message-boxID\" #messagebox placeholder=\"Type your message here\" (keyup)=\"actionOnEnter($event, messagebox)\"  (keydown)=\"update()\" autocomplete=\"off\" value=\"\" autofocus required>\n                        <button class=\"send\" (click)=\"action(messagebox)\" >Send</button>\n                    </div>\n                     <div>\n                        <ul id=\"messages\" class=\"message\"></ul>\n                        <ul class=\"collection\">\n                            <li class=\"collection-item avatar\" *ngFor=\"let item of messages.slice().reverse()\">\n                                <img src=\"//robohash.org/{{ item.message.id }}?set=set2&bgset=bg2&size=70x70\"  class=\"circle\">\n                                <span class=\"title\">#{{ item.message.id }}</span> \n                                <div>{{item.message.tweet}} <b>Enviado</b></div>\n                                <p>\n                                    <i class=\"prefix mdi-action-alarm\"></i>\n                                    <span class=\"message-date\">{{item.message.date | date: 'dd/MM/yyyy'}}:{{ item.message.text  || \"ddd\" }}</span>\n                                    <br/>\n                                </p>        \n                            </li>\n                        </ul>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n\n\n\n    <div class=\"secondSubChild\">\n        <div class=user-alert>\n            <div id=\"newUserID\" *ngIf=\"newUser\">\n                {{newUserName}} joined Chat!\n            </div>\n            <div id=\"leftUserID\" *ngIf=\"exitedUser\">\n                {{exitedUserName}} left the Chat!\n            </div>\n        </div>\n        <div class=\"caption\">\n            <h2>Connected Users</h2>\n        </div>\n        <div class=\"user-list\">\n            <ul class=\"user-list-ul\">\n                <li *ngFor=\"let name of clientsNameList\" class=\"user-list__item\">\n                    <div>\n                        <input class=\"check-box\" type=\"checkbox\" [checked]=\"true\" disabled>\n                    </div>\n                    <div class=\"user-list__content\">\n                        <div class=\"user-list__name\">\n                            <div class=\"text text_size_m\">{{name}}</div>\n                        </div>\n                    </div>                \n                </li>\n            </ul>\n        </div>\n        <div id=\"resID\" *ngIf=\"resFlag\">\n            this is the server response : {{response}}\n        </div>     \n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -630,6 +630,7 @@ var ChatComponent = (function () {
         this.exitedUserName = null;
         this.sentMessageUsername = null;
         this.msgCount = 0;
+        this.temperature = 0.0;
         var reference = this;
         var temp;
         var user = 'web-client_' + new Date();
@@ -707,13 +708,13 @@ var ChatComponent = (function () {
     ChatComponent.prototype.ngOnInit = function () {
     };
     ChatComponent.prototype.action = function (data) {
-        //console.log(data);
+        console.log(data.value);
         this.resFlag = true;
         var reference = this;
         this.pubnub.publish({
             channel: this.channel,
             message: {
-                "id": 1,
+                "id": 2,
                 "text": data.value,
                 "date": new Date(),
                 "tweet": data.value
@@ -734,7 +735,6 @@ var ChatComponent = (function () {
         }
     };
     ChatComponent.prototype.update = function () {
-        console.log("DD");
         this.resFlag = false;
         this.newUser = false;
         this.exitedUser = false;

@@ -4,7 +4,7 @@
             <h2>Messages</h2>
             <div class="chat-box">   
                 <div class="message-box">
-                   Temperatura: {{temperature}}
+                    Temperatura: {{temperature}}
                     <div class="enter-message">
                         <input id="message-boxID" #messagebox placeholder="Type your message here" (keyup)="actionOnEnter($event, messagebox)"  (keydown)="update()" autocomplete="off" value="" autofocus required>
                         <button class="send" (click)="action(messagebox)" >Send</button>
@@ -15,10 +15,10 @@
                             <li class="collection-item avatar" *ngFor="let item of messages.slice().reverse()">
                                 <img src="//robohash.org/{{ item.message.id }}?set=set2&bgset=bg2&size=70x70"  class="circle">
                                 <span class="title">#{{ item.message.id }}</span> 
-                                <div>{{item.message.tweet}} <b>{{item.message.twtr_response.id || "fff"}}</b></div>
+                                <div>{{item.message.tweet}} <b>Enviado</b></div>
                                 <p>
                                     <i class="prefix mdi-action-alarm"></i>
-                                    <span class="message-date">{{item.message.date | date: 'dd/MM/yyyy'}}:{{ item.message.text  || "ddd"}}</span>
+                                    <span class="message-date">{{item.message.date | date: 'dd/MM/yyyy'}}:{{ item.message.text  || "ddd" }}</span>
                                     <br/>
                                 </p>        
                             </li>
